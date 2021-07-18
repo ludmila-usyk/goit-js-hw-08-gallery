@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>delegation</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            outline: 2px solid tomato;
+        }
+        button {
+            margin: 4px;
+        }
+    </style>
+  </head>
+  <body>
+ 
+<!-- <ul>
+    <li><a href="/01-bubbling.html">всплытие событий</a></li>
+    <li><a href="/02-delegation.html">делегирование событий</a></li>
+    <li><a href="/03-tags.html">мастеркая: теги</a></li>
+    <li><a href="/04-colorpicker.html">мастерская: колорпикер</a></li>
+</ul> -->
+    
+<button class="js-add-btn">добавить кнопку</button>
+<hr/>
+<div class="container js-container">
+    <button type="button">Кнопка 1</button>
+    <button type="button">Кнопка 2</button>
+    <button type="button">Кнопка 3</button>
+    <button type="button">Кнопка 4</button>   
+    <button type="button">Кнопка 5</button>
+</div>
+
+
+
+    <script src="delegation.js"></script>
+  </body>
+</html>
