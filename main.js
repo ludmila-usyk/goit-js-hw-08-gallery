@@ -34,7 +34,7 @@ galleryRef.addEventListener('click', onOpenModal);
 lightboxRef.addEventListener('click', onCloseModal);
 
 function onCloseModal(e) {
-    if (e.target.nodeName !== "IMG") {
+    if (e.target.nodeName === "IMG") {
         return;
     }
     window.removeEventListener("keyup", closeByEscape);
@@ -46,7 +46,7 @@ function onCloseModal(e) {
 
 function onOpenModal(e) {
     e.preventDefault();
-    if (e.target.nodeName !== 'IMG') {
+    if (e.target.nodeName !== "IMG") {
         return;
     }
     lightboxRef.classList.add("is-open");
@@ -59,7 +59,7 @@ function closeByEscape(e) {
     if (e.key === "Escape") {
         onCloseModal(e);
     }
-};
+}
 
 
 
@@ -80,18 +80,3 @@ function closeByEscape(e) {
 
 
 
-
-
-
-// function closeModalESC(evt) {
-//     if (evt.key !== "Escape") {
-//         return;
-//     }
-//     toggleModal();
-// };
-// function toggleModal() {
-//     closeModalESC.classList.toggle("open-modal");
-// };
-// lightboxRef.addEventListener("click", toggleModal);
-// lightboxButtonRef.addEventListener("click", toggleModal);
-// window.addEventListener("keyup", closeModalESC);
