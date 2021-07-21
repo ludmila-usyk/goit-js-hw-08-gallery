@@ -44,78 +44,96 @@ function onClick(e) {
 
 //modal
 
-// galleryRef.addEventListener('click', onOpenModal);
+// galleryRef.addEventListener('click', onClick);
+// function onClick(e) {
+// e.preventDefault();
+//     if (e.target.nodeName !== 'IMG') {
+//         return;
+//     }
+// lightboxRef.classList.add('is-open')
+// lightboxImageRef.src = e.target.dataset.source
+// }
+
+
+
+
+
+
+
+
+
+galleryRef.addEventListener('click', onOpenModal);
+
+function onOpenModal(e) {
+    e.preventDefault();
+    if (e.target.nodeName !== "IMG") {
+      return;
+    }
+    document.addEventListener("keydown", onCloseModal);
+  
+    lightboxRef.classList.add("is-open");
+    lightboxImageRef.src = e.target.dataset.source;
+    lightboxImageRef.alt = e.target.alt;
+  }
+  
+  function onCloseModal(e) {
+    e.preventDefault();
+    document.removeEventListener("keydown", onCloseModal);
+    lightboxRef.classList.remove("is-open");
+    lightboxImageRef.src = "";
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
 // function onOpenModal(e) {
 //     e.preventDefault();
-//     if (e.target.nodeName !== "IMG") {
-//       return;
+//     if(e.target.nodeName !== 'IMG') {
+//         return;
 //     }
-//     document.addEventListener("keydown", onCloseModal);
-  
-//     lightboxRef.classList.add("is-open");
-//     lightboxImageRef.src = e.target.dataset.source;
-//     lightboxImageRef.alt = e.target.alt;
-//   }
-  
-//   function onCloseModal(e) {
-//     e.preventDefault();
-//     document.removeEventListener("keydown", onCloseModal);
+//         lightboxRef.classList.add("is-open");
+//         lightboxImageRef.src = e.target.dataset.source;
+//         lightboxImageRef.alt = e.target.alt;
+//         lightboxOverlayRef.addEventListener("click", closeByOverlay);
+//         document.addEventListener("keydown", closeByEscape);
+//         lightboxButtonRef.addEventListener('click', onCloseModal);
+//         window.addEventListener("keydown", lightboxImageRefScroll);
+//         lightboxContentRef.addEventListener("click", lightboxImageRefScroll);          
+// };
+
+// function onCloseModal(e) {
 //     lightboxRef.classList.remove("is-open");
-//     lightboxImageRef.src = "";
-//   }
+//     lightboxOverlayRef.removeEventListener("click", closeByOverlay);
+//     document.removeEventListener("keydown", closeByEscape);
+//     lightboxButtonRef.removeEventListener('click', onCloseModal);
+//     window.removeEventListener("keydown", lightboxImageRefScroll);
+//     lightboxContentRef.removeEventListener("click", lightboxImageRefScroll);      
+// };
 
-
-
-
-
-
-
-
-
-
-
-
-
-function onOpenModal(e) {
-    e.stopPropagation();
-    if(e.target.nodeName !== 'IMG') {
-        return;
-    }
-        lightboxRef.classList.add("is-open");
-        lightboxImageRef.src = e.target.dataset.source;
-        lightboxImageRef.alt = e.target.alt;
-        lightboxOverlayRef.addEventListener("click", closeByOverlay);
-        document.addEventListener("keydown", closeByEscape);
-        lightboxButtonRef.addEventListener('click', onCloseModal);
-        window.addEventListener("keydown", lightboxImageRefScroll);
-        lightboxContentRef.addEventListener("click", lightboxImageRefScroll);          
-};
-
-function onCloseModal(e) {
-    lightboxRef.classList.remove("is-open");
-    lightboxOverlayRef.removeEventListener("click", closeByOverlay);
-    document.removeEventListener("keydown", closeByEscape);
-    lightboxButtonRef.removeEventListener('click', onCloseModal);
-    window.removeEventListener("keydown", lightboxImageRefScroll);
-    lightboxContentRef.removeEventListener("click", lightboxImageRefScroll);      
-};
-
-galleryRef.addEventListener('click', onOpenModal);
+// galleryRef.addEventListener('click', onOpenModal);
 // lightboxButtonRef.addEventListener('click', onCloseModal);
 
 
-function closeByEscape(e) {
-    if (e.code === "Escape") {
-        onCloseModal(e)        
-    }
-};
+// function closeByEscape(e) {
+//     if (e.code === "Escape") {
+//         onCloseModal(e)        
+//     }
+// };
 
-function closeByOverlay(e) {
-    if (e.currentTarget === e.target) {
-        onCloseModal(e)      
-    }
-};
+// function closeByOverlay(e) {
+//     if (e.currentTarget === e.target) {
+//         onCloseModal(e)      
+//     }
+// };
 
 
 
