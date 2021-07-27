@@ -6,6 +6,7 @@ const lightboxOverlayRef = document.querySelector('.lightbox__overlay');
 const lightboxImageRef = document.querySelector('.lightbox__image');
 const lightboxButtonRef = document.querySelector('.lightbox__button');
 const lightboxContentRef = document.querySelector('.lightbox__content');
+let currentEl = 0;
 
 //Создание и рендер разметки по массиву данных galleryItems из app.js и предоставленному шаблону.
 const pictureMarkup = createGallery().join("");
@@ -38,6 +39,7 @@ function onCloseModal(e) {
         return;
     }
     window.removeEventListener("keyup", closeByEscape);
+    window.removeEventListener('keydown', onNextImgClick);
     lightboxRef.classList.remove("is-open");
     lightboxImageRef.src = "#";
 }
@@ -52,6 +54,7 @@ function onOpenModal(e) {
     lightboxRef.classList.add("is-open");
     lightboxImageRef.src = e.target.dataset.source;
     window.addEventListener("keyup", closeByEscape);
+    window.addEventListener('keydown', onNextImgClick);
 }
 
 // закрываем по Escape
@@ -59,6 +62,23 @@ function closeByEscape(e) {
     if (e.key === "Escape") {
         onCloseModal(e);
     }
+}
+
+//переключение влево/вправо
+function onNextImgClick(e) {
+    const ARR_RIGHT_CODE = 'ArrowRight';
+    const ARR_LEFT_CODE = 'ArrowLeft';
+
+    if (e.code === ARR_RIGHT_CODE) {
+        currentEl += 1;
+    } else if (e.code === ARR_LEFT_CODE) {
+        currentEl -= 1;
+    } else {return};
+
+    if (currentEl >= 0 && currentEl < galleryItems.length) {
+        lightboxImageRef.src = `${galleryItems[currentEl].original}`;
+        lightboxImageRef.alt = `${galleryItems[currentEl].description}`;
+    } else {currentEl = -1};
 }
 
 
